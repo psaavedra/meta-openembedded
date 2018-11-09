@@ -1,0 +1,19 @@
+Index: ibus-anthy-1.5.10/gir/Makefile.am
+===================================================================
+--- ibus-anthy-1.5.10.orig/gir/Makefile.am
++++ ibus-anthy-1.5.10/gir/Makefile.am
+@@ -68,12 +68,12 @@ Anthy_9000_gir_SCANNERFLAGS = \
+ 	--warn-all \
+ 	$(NULL)
+ Anthy_9000_gir_INCLUDES = GObject-2.0
+-Anthy_9000_gir_LIBS = $(libanthygobject) anthy
++Anthy_9000_gir_LIBS = $(libanthygobject)
+ Anthy_9000_gir_CFLAGS = @ANTHY_CFLAGS@
+ Anthy_9000_gir_FILES = \
+ 	$(libanthygobject_1_0_la_SOURCES) \
+ 	$(anthyinclude_HEADERS) \
+-	$(ANTHY_INCLUDEDIR)/anthy/anthy.h \
++	$(STAGING_DIR_HOST)$(ANTHY_INCLUDEDIR)/anthy/anthy.h \
+ 	$(NULL)
+ INTROSPECTION_GIRS += Anthy-9000.gir
+ 
