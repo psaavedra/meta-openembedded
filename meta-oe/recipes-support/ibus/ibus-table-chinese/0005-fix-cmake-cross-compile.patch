@@ -1,0 +1,130 @@
+diff -u -r ibus-table-chinese-1.8.2/tables/array/CMakeLists.txt new/tables/array/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/array/CMakeLists.txt	2018-10-30 01:56:21.474548447 +0100
++++ new/tables/array/CMakeLists.txt	2018-10-29 23:39:57.770116668 +0100
+@@ -16,7 +16,7 @@
+ 
+ CONFIGURE_FILE(${ARRAY30_HEAD_IN} ${ARRAY30_BASE_HEAD} @ONLY)
+ 
+-CONVERT_ENCODING(${ARRAY30_BASE_UTF8} UTF16 array30_27489.txt)
++CONVERT_ENCODING(${ARRAY30_BASE_UTF8} UTF16 ${CMAKE_CURRENT_SOURCE_DIR}/array30_27489.txt)
+ GENERATE_FREQ(${ARRAY30_BASE_FREQ}
+     ${ARRAY30_BASE_UTF8}
+     )
+@@ -41,10 +41,10 @@
+ CONFIGURE_FILE(${ARRAY30_HEAD_IN} ${ARRAY30_BIG_HEAD} @ONLY)
+ 
+ SET(ARRAY30_EXT_B_UTF8 ${CMAKE_CURRENT_BINARY_DIR}/array30_ExtB.utf8)
+-CONVERT_ENCODING(${CMAKE_CURRENT_BINARY_DIR}/array30_ExtB.utf8 UTF16 array30_ExtB.txt)
++CONVERT_ENCODING(${CMAKE_CURRENT_BINARY_DIR}/array30_ExtB.utf8 UTF16 ${CMAKE_CURRENT_SOURCE_DIR}/array30_ExtB.txt)
+ 
+ SET(ARRAY30_EXT_CD_UTF8 ${CMAKE_CURRENT_BINARY_DIR}/array30_ExtCD.utf8)
+-CONVERT_ENCODING(${CMAKE_CURRENT_BINARY_DIR}/array30_ExtCD.utf8 UTF16 array30_ExtCD_V2012A.txt)
++CONVERT_ENCODING(${CMAKE_CURRENT_BINARY_DIR}/array30_ExtCD.utf8 UTF16 ${CMAKE_CURRENT_SOURCE_DIR}/array30_ExtCD_V2012A.txt)
+ 
+ ADD_CUSTOM_COMMAND(OUTPUT ${ARRAY30_BIG_UTF8}
+     COMMAND cat ${ARRAY30_BASE_UTF8}
+Only in new/tables/array: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/cangjie/CMakeLists.txt new/tables/cangjie/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/cangjie/CMakeLists.txt	2018-10-30 01:56:50.506773198 +0100
++++ new/tables/cangjie/CMakeLists.txt	2018-10-30 00:15:41.319903050 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(cangjie "cangjie3.txt" "cangjie5.txt" "cangjie-big.txt")
++CONVERT_DB(cangjie "${CMAKE_CURRENT_SOURCE_DIR}/cangjie3.txt" "${CMAKE_CURRENT_SOURCE_DIR}/cangjie5.txt" "${CMAKE_CURRENT_SOURCE_DIR}/cangjie-big.txt")
+ 
+Only in new/tables/cangjie: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/cantonese/CMakeLists.txt new/tables/cantonese/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/cantonese/CMakeLists.txt	2018-10-30 01:56:29.464408649 +0100
++++ new/tables/cantonese/CMakeLists.txt	2018-10-30 00:05:51.026038238 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(cantonese "cantonese.txt" "cantonhk.txt" "jyutping.txt")
++CONVERT_DB(cantonese "${CMAKE_CURRENT_SOURCE_DIR}/cantonese.txt" "${CMAKE_CURRENT_SOURCE_DIR}/cantonhk.txt" "${CMAKE_CURRENT_SOURCE_DIR}/jyutping.txt")
+ 
+Only in new/tables/cantonese: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/CMakeLists.txt new/tables/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/CMakeLists.txt	2018-10-30 01:56:08.781947707 +0100
++++ new/tables/CMakeLists.txt	2018-10-30 01:53:51.086824367 +0100
+@@ -87,7 +87,7 @@
+ 	    DEPENDS ${_tabFile}
+ 	    COMMENT "Building ${_tabName} table"
+ 	    )
+-	LIST(APPEND _dependDb "${_dbF}")
++	LIST(APPEND _dependDb "${CMAKE_CURRENT_BINARY_DIR}/${_dbF}")
+ 	IF(EXISTS "${CMAKE_SOURCE_DIR}/icons/${_tabName}.png")
+ 	    LIST(APPEND _dependIcon "${CMAKE_SOURCE_DIR}/icons/${_tabName}.png")
+ 	ELSEIF(EXISTS "${CMAKE_SOURCE_DIR}/icons/${_tabName}.svg")
+Only in new/tables: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/easy/CMakeLists.txt new/tables/easy/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/easy/CMakeLists.txt	2018-10-30 01:56:35.966667250 +0100
++++ new/tables/easy/CMakeLists.txt	2018-10-30 00:07:49.806217968 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(easy "easy-big.txt")
++CONVERT_DB(easy "${CMAKE_CURRENT_SOURCE_DIR}/easy-big.txt")
+ 
+Only in new/tables/easy: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/erbi/CMakeLists.txt new/tables/erbi/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/erbi/CMakeLists.txt	2018-10-30 01:56:39.921608060 +0100
++++ new/tables/erbi/CMakeLists.txt	2018-10-30 00:08:14.355641341 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(erbi "erbi.txt" "erbi-qs.txt")
++CONVERT_DB(erbi "${CMAKE_CURRENT_SOURCE_DIR}/erbi.txt" "${CMAKE_CURRENT_SOURCE_DIR}/erbi-qs.txt")
+ 
+Only in new/tables/erbi: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/quick/CMakeLists.txt new/tables/quick/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/quick/CMakeLists.txt	2018-10-30 01:56:43.592624907 +0100
++++ new/tables/quick/CMakeLists.txt	2018-10-30 00:14:13.643389364 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(quick "quick3.txt" "quick5.txt" "quick-classic.txt")
++CONVERT_DB(quick "${CMAKE_CURRENT_SOURCE_DIR}/quick3.txt" "${CMAKE_CURRENT_SOURCE_DIR}/quick5.txt" "${CMAKE_CURRENT_SOURCE_DIR}/quick-classic.txt")
+ 
+Only in new/tables/quick: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/scj/CMakeLists.txt new/tables/scj/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/scj/CMakeLists.txt	2018-10-30 01:56:47.079691021 +0100
++++ new/tables/scj/CMakeLists.txt	2018-10-30 00:00:14.404215150 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(scj "scj6.txt")
++CONVERT_DB(scj "${CMAKE_CURRENT_SOURCE_DIR}/scj6.txt")
+ 
+Only in new/tables/scj: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/stroke5/CMakeLists.txt new/tables/stroke5/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/stroke5/CMakeLists.txt	2018-10-30 01:56:32.727534736 +0100
++++ new/tables/stroke5/CMakeLists.txt	2018-10-30 00:07:28.132024331 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(stroke5 "stroke5.txt")
++CONVERT_DB(stroke5 "${CMAKE_CURRENT_SOURCE_DIR}/stroke5.txt")
+ 
+Only in new/tables/stroke5: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/wu/CMakeLists.txt new/tables/wu/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/wu/CMakeLists.txt	2018-10-30 01:56:53.921858589 +0100
++++ new/tables/wu/CMakeLists.txt	2018-10-30 00:16:38.080698934 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(wu "wu.txt")
++CONVERT_DB(wu "${CMAKE_CURRENT_SOURCE_DIR}/wu.txt")
+ 
+Only in new/tables/wu: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/wubi-haifeng/CMakeLists.txt new/tables/wubi-haifeng/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/wubi-haifeng/CMakeLists.txt	2018-10-30 01:56:15.560132413 +0100
++++ new/tables/wubi-haifeng/CMakeLists.txt	2018-10-29 23:30:12.746818405 +0100
+@@ -5,6 +5,6 @@
+ #    COMMENT "Building wubi-haifeng86.UTF-8"
+ #    )
+ 
+-MAKE_TABLE_SOURCE_TXT(wubi-haifeng86.txt wubi-haifeng86.head wubi-haifeng86.UTF-8 wubi-haifeng86.tail)
++MAKE_TABLE_SOURCE_TXT(wubi-haifeng86.txt ${CMAKE_CURRENT_SOURCE_DIR}/wubi-haifeng86.head ${CMAKE_CURRENT_SOURCE_DIR}/wubi-haifeng86.UTF-8 ${CMAKE_CURRENT_SOURCE_DIR}/wubi-haifeng86.tail)
+ CONVERT_DB(wubi-haifeng "wubi-haifeng86.txt")
+ 
+Only in new/tables/wubi-haifeng: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/wubi-jidian/CMakeLists.txt new/tables/wubi-jidian/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/wubi-jidian/CMakeLists.txt	2018-10-30 01:56:25.921357528 +0100
++++ new/tables/wubi-jidian/CMakeLists.txt	2018-10-30 00:01:13.876283460 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(wubi-jidian "wubi-jidian86.txt")
++CONVERT_DB(wubi-jidian "${CMAKE_CURRENT_SOURCE_DIR}/wubi-jidian86.txt")
+ 
+Only in new/tables/wubi-jidian: .CMakeLists.txt.swp
+diff -u -r ibus-table-chinese-1.8.2/tables/yong/CMakeLists.txt new/tables/yong/CMakeLists.txt
+--- ibus-table-chinese-1.8.2/tables/yong/CMakeLists.txt	2018-10-30 01:56:57.568881862 +0100
++++ new/tables/yong/CMakeLists.txt	2018-10-30 00:17:30.326704114 +0100
+@@ -1,2 +1,2 @@
+-CONVERT_DB(yong "yong.txt")
++CONVERT_DB(yong "${CMAKE_CURRENT_SOURCE_DIR}/yong.txt")
+ 
